@@ -2,7 +2,7 @@
   "name": "commutely",
   "version": "1.0.0",
   "description": "commuting app",
-  "main": "server.js",
+  "main": "server/server.js",
   "scripts": {
     "test": "test"
   },
