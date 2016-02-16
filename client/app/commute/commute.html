@@ -1,8 +1,6 @@
 <div id='commute'>
-  <h1>Commute</h1>
+  <h1>Route</h1>
   <form name="commuteForm" ng-submit="getCommute()">
-  <input type="submit" />
-  <div>{{ user }}</div>
     <div id="floating-panel">
     <b>Mode of Travel: </b>
     <select id="mode">
@@ -15,5 +13,6 @@
     <input type="text" placeholder="Departure location" ng-model="user.origin" />
     <input type="text" placeholder="Destination" ng-model="user.destination">
     <div>Arrive By: <input type="time" ng-model="user.arrival_time" /></div>
+  <input type="submit" />
   </form>
 </div>

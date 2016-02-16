@@ -1,4 +1,4 @@
-angular.module('commutely.commute', ['angularjs-datetime-picker'])
+angular.module('commutely.commute', [])
 .controller('CommController', function ($scope, Comm) {  
   
   $scope.user = {};

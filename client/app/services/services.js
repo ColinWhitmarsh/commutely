@@ -41,8 +41,8 @@ angular.module('commutely.services', [])
           var directionsService = new window.google.maps.DirectionsService
           var selectedMode = document.getElementById('mode').value;
           directionsService.route({
-            origin: "1844 Vine St, Berkeley CA 94703",  // Haight.
-            destination: "944 Market St, San Francisco, CA 94102",  // Ocean Beach.
+            origin: user.origin,  // Haight.
+            destination: user.destination,  // Ocean Beach.
             // Note that Javascript allows us to access the constant
             // using square brackets and a string value as its
             // "property."
