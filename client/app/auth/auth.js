@@ -1,9 +1,10 @@
 angular.module('commutely.auth', [])
 .controller('AuthController', function ($scope, $window, $location, Auth) {
+  
   $scope.user = {};
 
-  $scope.signin = function () {
-    Auth.signin($scope.user)
+  $scope.login = function () {
+    Auth.login($scope.user)
       .then(function (token) {
         $window.localStorage.setItem('com.commutely', token);
         $location.path('/commute');
@@ -13,11 +14,13 @@ angular.module('commutely.auth', [])
       });
   };
 
+  $scope.click = Auth.signup;
+
   $scope.signup = function () {
     Auth.signup($scope.user)
       .then(function (token) {
-        $window.localStorage.setItem('com.shortly', token);
-        $location.path('/links');
+        $window.localStorage.setItem('com.commutely', token);
+        $location.path('/commute');
       })
       .catch(function (error) {
         console.error(error);
