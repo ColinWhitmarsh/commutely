@@ -1,12 +1,14 @@
 angular.module('commutely.services', [])
 .factory('Auth', function ($http, $location, $window) {
     var login = function (user) {
+        console.log('user inside login func');
         return $http({
             method: 'POST',
             url: '/api/users/login',
             data: user
         })
         .then(function (resp) {
+            console.log('login resp from server');
             return resp.data.token;
         });
     };
@@ -36,7 +38,7 @@ angular.module('commutely.services', [])
     };
 })
 .factory('Route', function ($http) {
-    var getRoute = function (user) {
+    var saveRoute = function (user) {
           // var directionsDisplay = new google.maps.DirectionsRenderer
           var directionsService = new window.google.maps.DirectionsService
           var selectedMode = document.getElementById('mode').value;
@@ -71,31 +73,68 @@ angular.module('commutely.services', [])
     };
 
     return {
-        getRoute: getRoute
+        saveRoute: saveRoute
     };
 })
 .factory('Comm', function ($http) {
+    // var getCommute = function (user) {
+        
+    //     var formatTime = function (date) {
+    //       var hours = date.getHours();
+    //       var minutes = date.getMinutes();
+    //       var ampm = hours >= 12 ? 'pm' : 'am';
+    //       hours = hours % 12;
+    //       hours = hours ? hours : 12; // the hour '0' should be '12'
+    //       minutes = minutes < 10 ? '0'+minutes : minutes;
+    //       var strTime = hours + ':' + minutes + ' ' + ampm;
+    //       return strTime;
+    //     };
+        
+    //     //assume minutes
+    //     user.duration = 30;
+    //     user.arrivalTime = new Date('February 17, 2016 08:30:00');
+    //     user.departureTime = new Date(user.arrivalTime - (user.duration * 60000));
+    //     user.departureTime = formatTime(user.departureTime);
+    // };
+
     var getCommute = function (user) {
-        
-        var formatTime = function (date) {
-          var hours = date.getHours();
-          var minutes = date.getMinutes();
-          var ampm = hours >= 12 ? 'pm' : 'am';
-          hours = hours % 12;
-          hours = hours ? hours : 12; // the hour '0' should be '12'
-          minutes = minutes < 10 ? '0'+minutes : minutes;
-          var strTime = hours + ':' + minutes + ' ' + ampm;
-          return strTime;
-        };
-        
-        //assume minutes
-        user.duration = 30;
-        user.arrivalTime = new Date('February 17, 2016 08:30:00');
-        user.departureTime = new Date(user.arrivalTime - (user.duration * 60000));
-        user.departureTime = formatTime(user.departureTime);
+        user.username = 'colin';
+        $http({
+            method: 'GET',
+            url: '/api/users/route'
+        })
+        .then(function (resp) {
+            var formatTime = function (date) {
+               var hours = date.getHours();
+               var minutes = date.getMinutes();
+               var ampm = hours >= 12 ? 'pm' : 'am';
+               hours = hours % 12;
+               hours = hours ? hours : 12; // the hour '0' should be '12'
+               minutes = minutes < 10 ? '0'+minutes : minutes;
+               var strTime = hours + ':' + minutes + ' ' + ampm;
+               return strTime;
+             };
+             
+             //assume minutes
+             user.duration = resp.body.duration;
+             // user.arrivalTime = new Date('February 17, 2016 08:30:00');
+             user.arrivalTime = resp.body.arrivalTime;
+             user.departureTime = new Date(user.arrivalTime - (user.duration * 60000));
+             user.departureTime = formatTime(user.departureTime);
+        });
     };
 
     return {
         getCommute: getCommute
     };
 });
+
+
+
+
+
+
+
+
+
+

@@ -7,6 +7,7 @@ var createUser = Q.nbind(User.create, User);
 
 module.exports = {
   login: function (req, res, next) {
+    console.log('req.body', req.body);
     var username = req.body.username;
     var password = req.body.password;
 
@@ -77,6 +78,7 @@ module.exports = {
             if (err) {
               return next(new Error('Couldn\'t update user'));
             } else {
+              console.log(user)
               res.send(user);
             }
           });
@@ -86,6 +88,30 @@ module.exports = {
         next(error);
       });
 
+  },
+
+  getRoute: function (req, res, next) {
+    var token = req.headers['x-access-token'];
+    if (!token) {
+      next(new Error('No token'));
+    } else {
+      var user = jwt.decode(token, 'supersecret');
+      findUser({username: user.username})
+        .then(function (user) {
+          if (!user) {
+            next(new Error('User does not exist'));
+          } else {
+            res.body.origin = user.origin;
+            res.body.destination = user.destination;
+            res.body.duration = user.duration;
+            res.body.arrivalTime = user.arrivalTime;
+            res.send(200);
+          }
+      })
+      .fail(function (error) {
+        next(error);
+      });
+    }
   },
 
   checkAuth: function (req, res, next) {

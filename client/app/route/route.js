@@ -3,8 +3,8 @@ angular.module('commutely.route', [])
   
   $scope.user = {};
 
-  $scope.getRoute = function () {
-    Route.getRoute($scope.user);
+  $scope.saveRoute = function () {
+    Route.saveRoute($scope.user);
       // .then(function (data) {
         
       // })

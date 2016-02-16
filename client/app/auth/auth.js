@@ -4,6 +4,7 @@ angular.module('commutely.auth', [])
   $scope.user = {};
 
   $scope.login = function () {
+    console.log('login button clicked!');
     Auth.login($scope.user)
       .then(function (token) {
         $window.localStorage.setItem('com.commutely', token);

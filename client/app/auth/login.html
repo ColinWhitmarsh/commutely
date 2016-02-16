@@ -1,15 +1,15 @@
 <h2>Login</h2>
-<form  name="loginForm" class="login" ng-submit="" role="form">
+<form  name="loginForm" class="login" ng-submit="login()" role="form">
     <div class="">
         <label for="username">Username</label>
         <i class=""></i>
-        <input type="text" name="username" class="username" ng-model="username" required />
+        <input type="text" name="username" class="username" ng-model="user.username" required />
         <span ng-show="loginForm.username.$dirty && loginForm.username.$error.required" class="message">Username required</span>
     </div>
     <div class="">
         <label for="password">Password</label>
         <i class=""></i>
-        <input type="text" name="password" class="password" ng-model="password" required />
+        <input type="text" name="password" class="password" ng-model="user.password" required />
         <span ng-show="loginForm.password.$dirty && loginForm.password.$error.required" class="message">Password required</span>
     </div>
     <div class="submit">
