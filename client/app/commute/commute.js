@@ -5,12 +5,6 @@ angular.module('commutely.commute', [])
 
   $scope.getCommute = function () {
     Comm.getCommute($scope.user);
-      // .then(function (data) {
-        
-      // })
-      // .catch( function (error) {
-      //   console.error(error);
-      // });
   };
 
 });

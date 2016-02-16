@@ -18,6 +18,10 @@ angular.module('commutely', [
       templateUrl: 'app/commute/commute.html',
       controller: 'CommController'
     })
+    .when('/route', {
+      templateUrl: 'app/route/route.html',
+      controller: 'RouteController'
+    })
     .otherwise({
       redirectTo: '/login'
     });

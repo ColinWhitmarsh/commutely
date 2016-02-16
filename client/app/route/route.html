@@ -1,0 +1,18 @@
+<div id='route'>
+  <h1>Route</h1>
+  <form name="routeForm" ng-submit="getRoute()">
+    <div id="floating-panel">
+    <b>Mode of Travel: </b>
+    <select id="mode">
+      <option value="DRIVING">Driving</option>
+      <option value="WALKING">Walking</option>
+      <option value="BICYCLING">Bicycling</option>
+      <option value="TRANSIT">Transit</option>
+    </select>
+    </div>
+    <div><input type="text" placeholder="Departure location" ng-model="user.origin" /></div>
+    <div><input type="text" placeholder="Destination" ng-model="user.destination"></div>
+    <div>Arrive By: <input type="time" ng-model="user.arrival_time" /></div>
+  <input type="submit" />
+  </form>
+</div>
