@@ -37,14 +37,27 @@ angular.module('commutely.services', [])
 })
 .factory('Comm', function ($http) {
     var getCommute = function (user) {
-        return $http({
-            method: 'GET',
-            url: '',
-            data: user
-        })
-        .then(function (resp) {
-            return resp;
-        });
+          // var directionsDisplay = new google.maps.DirectionsRenderer
+          var directionsService = new window.google.maps.DirectionsService
+          var selectedMode = document.getElementById('mode').value;
+          directionsService.route({
+            origin: "1844 Vine St, Berkeley CA 94703",  // Haight.
+            destination: "944 Market St, San Francisco, CA 94102",  // Ocean Beach.
+            // Note that Javascript allows us to access the constant
+            // using square brackets and a string value as its
+            // "property."
+            travelMode: google.maps.TravelMode[selectedMode],
+            transitOptions: {
+              arrivalTime: new Date('February 17, 2016 08:30:00')
+            }
+          }, function(response, status) {
+            if (status == google.maps.DirectionsStatus.OK) {
+              console.log(response);
+              // directionsDisplay.setDirections(response);
+            } else {
+              window.alert('Directions request failed due to ' + status);
+            }
+          });
     };
 
     return {

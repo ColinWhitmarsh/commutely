@@ -2,7 +2,7 @@ angular.module('commutely', [
   'commutely.services',
   'commutely.auth',
   'commutely.commute',
-  // 'commutely.google',
+  'angularjs-datetime-picker',
   'ngRoute'
 ])
 .config(function ($routeProvider, $httpProvider) {
