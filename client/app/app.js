@@ -2,6 +2,7 @@ angular.module('commutely', [
   'commutely.services',
   'commutely.auth',
   'commutely.commute',
+  'commutely.route',
   'ngRoute'
 ])
 .config(function ($routeProvider, $httpProvider) {

@@ -12,6 +12,26 @@ var UserSchema = new mongoose.Schema({
   password: {
     type: String,
     required: true
+  },
+
+  origin: {
+    type: String,
+    required: false
+  },
+
+  destination: {
+    type: String,
+    required: false
+  },
+
+  duration: {
+    type: String,
+    required: false
+  },
+
+  arrivalTime: {
+    type: String,
+    required: false
   }
 });
 

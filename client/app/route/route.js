@@ -4,7 +4,7 @@ angular.module('commutely.route', [])
   $scope.user = {};
 
   $scope.getRoute = function () {
-    Comm.getRoute($scope.user);
+    Route.getRoute($scope.user);
       // .then(function (data) {
         
       // })

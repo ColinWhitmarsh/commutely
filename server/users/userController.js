@@ -57,6 +57,37 @@ module.exports = {
       });
   },
 
+  saveRoute: function (req, res, next) {
+    var username = req.body.username;
+    var origin = req.body.origin;
+    var destination = req.body.destination;
+    var duration = req.body.duration;
+    var arrivalTime = req.body.arrivalTime;
+
+    findUser({username: username})
+      .then(function (user) {
+        if (!user) {
+          next(new Error('User does not exist'));
+        } else {
+          user.origin = origin;
+          user.destination = destination;
+          user.duration = duration;
+          user.arrivalTime = arrivalTime;
+          user.save(function(err) {
+            if (err) {
+              return next(new Error('Couldn\'t update user'));
+            } else {
+              res.send(user);
+            }
+          });
+        }
+      })
+      .fail(function (error) {
+        next(error);
+      });
+
+  },
+
   checkAuth: function (req, res, next) {
     var token = req.headers['x-access-token'];
     if (!token) {

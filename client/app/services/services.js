@@ -52,8 +52,18 @@ angular.module('commutely.services', [])
             }
           }, function(response, status) {
             if (status == google.maps.DirectionsStatus.OK) {
+                user.duration = 30;
+                user.arrivalTime = new Date('February 17, 2016 08:30:00');
+                user.username = 'colin'
               console.log(response);
-              // directionsDisplay.setDirections(response);
+                $http({
+                    method: 'POST',
+                    url: '/api/users/route',
+                    data: user
+                })
+                .then(function (resp) {
+                    return resp.data.token;
+                });
             } else {
               window.alert('Directions request failed due to ' + status);
             }
