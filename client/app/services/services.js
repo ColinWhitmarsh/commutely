@@ -43,7 +43,7 @@ angular.module('commutely.services', [])
             data: user
         })
         .then(function (resp) {
-            return resp.data;
+            return resp;
         });
     };
 

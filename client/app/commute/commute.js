@@ -6,7 +6,7 @@ angular.module('commutely.commute', [])
   $scope.getCommute = function () {
     Comm.getCommute($scope.user)
       .then(function (data) {
-        //assign data to scope
+        
       })
       .catch( function (error) {
         console.error(error);

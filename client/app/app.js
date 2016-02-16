@@ -2,9 +2,10 @@ angular.module('commutely', [
   'commutely.services',
   'commutely.auth',
   'commutely.commute',
+  'commutely.google',
   'ngRoute'
 ])
-.config(function ($routeProvider, $httpProvider) {
+.config(function ($routeProvider, $httpProvider, uiGmapGoogleMapApiProvider) {
   $routeProvider
     .when('/login', {
       templateUrl: 'app/auth/login.html',
@@ -20,5 +21,11 @@ angular.module('commutely', [
     })
     .otherwise({
       redirectTo: '/login'
+    });
+
+    uiGmapGoogleMapApiProvider.configure({
+        key: 'AIzaSyDa46pNBVjqTOKMkaA9dgg9jIgnAstRd0Y',
+        v: '3.20', //defaults to latest 3.X anyhow
+        libraries: 'weather,geometry,visualization'
     });
 });
