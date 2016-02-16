@@ -14,8 +14,6 @@ angular.module('commutely.auth', [])
       });
   };
 
-  $scope.click = Auth.signup;
-
   $scope.signup = function () {
     Auth.signup($scope.user)
       .then(function (token) {
@@ -27,3 +25,5 @@ angular.module('commutely.auth', [])
       });
   };
 });
+
+

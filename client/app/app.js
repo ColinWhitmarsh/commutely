@@ -1,6 +1,7 @@
 angular.module('commutely', [
   'commutely.services',
   'commutely.auth',
+  'commutely.commute',
   'ngRoute'
 ])
 .config(function ($routeProvider, $httpProvider) {
@@ -12,6 +13,10 @@ angular.module('commutely', [
     .when('/signup', {
       templateUrl: 'app/auth/signup.html',
       controller: 'AuthController'
+    })
+    .when('/commute', {
+      templateUrl: 'app/commute/commute.html',
+      controller: 'CommController'
     })
     .otherwise({
       redirectTo: '/login'
