@@ -7,4 +7,11 @@ angular.module('commutely.route', [])
     Route.saveRoute($scope.user)
   };
 
+  $scope.init = function () {
+    $(document).ready(function() {
+    $('select').material_select();
+});
+  }
+
+  $scope.init();
 });

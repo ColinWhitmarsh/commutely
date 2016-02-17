@@ -1,28 +1,26 @@
-<!-- <h2>Signup</h2>
-<form name="signup" class="signup" ng-controller="AuthController" role="form">
-  <div class="username" ng-class="">
-    <div>Test {{ user }}</div>
-    <label for="username">Username</label>
-    <input type="text" name="username" ng-model="user.username" required>
-    <span ng-show="signupForm.username.$dirty && signupForm.username.$error.required" class="message">Username required</span>
+<div class="section no-pad-bot" id="index-banner">
+  <div class="container">
+    <br><br>
+    <h1 class="header center orange-text">Signup</h1>
   </div>
-  <div>
-    <label for="password">Password</label>
-    <input type="password" name="password" ng-model="user.password" required>
-    <span ng-show="signupForm.password.$dirty && signupForm.password.$error.required" class="message">Password required</span>
+</div>
+<div class="container">
+  <div class="section">
+    <form name="signupForm">
+      <div class="input-field col s6">
+        <i class="material-icons prefix">account_circle</i>
+        <input id="icon_prefix" class="validate" type="text" placeholder="username" ng-model='user.username'/>
+      </div>
+      <div class="input-field col s6">
+        <i class="material-icons prefix">vpn_key</i>
+      <input type="password" placeholder="password" name="password" ng-model='user.password'/>
+      </div>
+      <div class="input-field col s6">
+        <i class="material-icons prefix">phone</i>
+        <input class="input-phone" placeholder="cellphone" type='text' phone-input ng-model="user.cellphone"/>
+      </div>
+      <a class="waves-effect waves-light orange btn" ng-click="signup()">signup</a>
+    </form>
+    <a href="#/login">Have an account? <strong>Signin</strong> ...</a>
   </div>
-  <div class="submit">
-    <button type="submit" ng-click="signup()"  ng-disabled="signupForm.$invalid">Signup</button>
-    <div>{{ click }}</div>
-  </div>
-</form> -->
-<div id='signup'>
-  <h1>signup</h1>
-  <form name="signupForm" ng-submit='signup()'>
-    <input type='text' ng-model='user.username'>
-    <input type="password" name="password" ng-model='user.password' ng-minlength="3">
-      <p ng-show="signupForm.password.$error.minlength" class="help-block">Password is too short.</p>
-    <button>signup</button>
-  </form>
-  <a href="#/login">Have an account? <strong>Signin</strong> ...</a>
 </div>

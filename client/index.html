@@ -2,7 +2,7 @@
 <html ng-app='commutely'>
   <head>
     <meta charset="utf-8" />
-    <title>Commutely</title>
+    <title>Commute</title>
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link type="text/css" rel="stylesheet" href="lib/Materialize/dist/css/materialize.min.css"  media="screen,projection"/>
     <script async defer
@@ -13,8 +13,22 @@
     <script type="text/javascript" src="lib/Materialize/dist/js/materialize.min.js"></script>
   </head>
   <body>
-    <h1>Commutely</h1>
+    <nav class="light-blue lighten-1" role="navigation" ng-controller="AuthController">
+      <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">Commute</a>
+      <ul class="right hide-on-med-and-down">
+        <li><a href="#/commute">Commute</a></li> 
+        <li><a href="#/route">Route</a></li>
+        <li><a ng-click="signout()">Logout</a></li>
+      </ul>
 
+      <ul id="nav-mobile" class="side-nav">
+        <li><a href="#/commute">Commute</a></li> 
+        <li><a href="#/route">Route</a></li>
+        <li><a ng-click="signout()">Logout</a></li>
+      </ul>
+      <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+      </div>
+    </nav>
     <div ng-view></div>
 
     <script src="lib/angular/angular.js"></script>
@@ -28,5 +42,30 @@
     <script src="app/route/route.js"></script>
     <script src="app/services/services.js"></script>
     <script src="app/app.js"></script>
+    
+    <footer class="page-footer light-blue">
+      <div class="container">
+        <div class="row">
+          <div class="col l6 s12">
+            <h5 class="white-text">Know when to leave each morning...</h5>
+            <p class="grey-text text-lighten-4">We check the traffic conditions, weather, and transit schedules. You get a text every morning half an hour before you need to leave so you can be on time.</p>
+          </div>
+          <div class="col l4 offset-l2 s12">
+            <h5 class="white-text">Links</h5>
+            <ul>
+              <li><a class="grey-text text-lighten-3" href="#!">Github</a></li>
+              <li><a class="grey-text text-lighten-3" href="#!">Blog</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer-copyright">
+        <div class="container">
+        Made by <a class="blue-text text-lighten-3" href="">Colin Whitmarsh</a>
+        </div> 
+        <a class="grey-text text-lighten-4 right" href="http://www.maps.google.com">Google Maps</a>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>

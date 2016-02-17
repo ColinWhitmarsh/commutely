@@ -1,23 +1,14 @@
-<nav class="light-blue lighten-1" role="navigation">
-  <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">
-    <ul>
-      <li><a href="#/commute">Commute</a></li> 
-      <li><a href="#/route">Route</a></li>
-      <li><a ng-click="signout()">Logout</a></li>
-    </ul>
-  </div>
-</nav>
 <div class="section no-pad-bot" id="index-banner">
   <div class="container">
     <br><br>
-    <h1 class="header center orange-text">Commute</h1>
+    <h1 class="header left orange-text">Commute</h1>
   </div>
 </div>
 <div class="container">
   <div class="section">
   <form name="commuteForm">
   <div>Leave by {{ user.departureTime }} to arrive on-time</div>
-  <button type="submit" ng-click="getCommute()">When Should I Leave?</button>
+  <a class="waves-effect waves-light orange btn" ng-click="getCommute()">When should I leave?</a>
   </form>
   </div>
 </div>
