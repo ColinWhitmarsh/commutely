@@ -14,6 +14,11 @@ var UserSchema = new mongoose.Schema({
     required: true
   },
 
+  cellphone: {
+    type: String,
+    required: false
+  },
+
   origin: {
     type: String,
     required: false

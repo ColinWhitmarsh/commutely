@@ -1,7 +1,8 @@
 var User = require('./userModel.js');
 var Q = require('q');
 var jwt = require('jwt-simple');
-var client = require('twilio')('AC088d01f4797b49e536690c7e11651a0f', '71e571fb68bc7bbd3ee7faa7d62da016');
+var cfg = require('../config/twilioConfig.js')
+var client = require('twilio')(cfg.accountSid,cfg.authToken);
 
 var findUser = Q.nbind(User.findOne, User);
 var createUser = Q.nbind(User.create, User);
@@ -118,7 +119,7 @@ module.exports = {
           } else {
             var message = {
               to: '+12022585536',
-              from: '+12025176941',
+              from: cfg.sendingNumber,
               body: 'Leave by 8:00 AM to arrive on time'
             };
             notifyUser(message);
