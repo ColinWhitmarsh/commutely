@@ -36,8 +36,10 @@ angular.module('commutely', [
   // then add it to the header so the server can validate the request
   var attach = {
     request: function (object) {
-      var jwt = $window.localStorage.getItem('com.shortly');
+      console.log('attach token function called');
+      var jwt = $window.localStorage.getItem('com.commutely');
       if (jwt) {
+        console.log('token found and request header attached');
         object.headers['x-access-token'] = jwt;
       }
       object.headers['Allow-Control-Allow-Origin'] = '*';

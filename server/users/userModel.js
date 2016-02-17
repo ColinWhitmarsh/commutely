@@ -32,6 +32,11 @@ var UserSchema = new mongoose.Schema({
   arrivalTime: {
     type: String,
     required: false
+  },
+
+  travelMode: {
+    type: String,
+    required: false
   }
 });
 

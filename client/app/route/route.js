@@ -5,12 +5,6 @@ angular.module('commutely.route', [])
 
   $scope.saveRoute = function () {
     Route.saveRoute($scope.user);
-      // .then(function (data) {
-        
-      // })
-      // .catch( function (error) {
-      //   console.error(error);
-      // });
   };
 
 });

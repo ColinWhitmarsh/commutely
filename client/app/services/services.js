@@ -39,15 +39,12 @@ angular.module('commutely.services', [])
 })
 .factory('Route', function ($http) {
     var saveRoute = function (user) {
-          // var directionsDisplay = new google.maps.DirectionsRenderer
           var directionsService = new window.google.maps.DirectionsService
           var selectedMode = document.getElementById('mode').value;
+          var selectedTime = document.getElementById('time').value;
           directionsService.route({
-            origin: user.origin,  // Haight.
-            destination: user.destination,  // Ocean Beach.
-            // Note that Javascript allows us to access the constant
-            // using square brackets and a string value as its
-            // "property."
+            origin: user.origin, 
+            destination: user.destination, 
             travelMode: google.maps.TravelMode[selectedMode],
             transitOptions: {
               arrivalTime: new Date('February 17, 2016 08:30:00')
@@ -56,7 +53,9 @@ angular.module('commutely.services', [])
             if (status == google.maps.DirectionsStatus.OK) {
                 user.duration = 30;
                 user.arrivalTime = new Date('February 17, 2016 08:30:00');
-                user.username = 'colin'
+                user.username = 'colin';
+                user.travelMode = google.maps.TravelMode[selectedMode];
+                console.log(user);
               console.log(response);
                 $http({
                     method: 'POST',
@@ -77,26 +76,6 @@ angular.module('commutely.services', [])
     };
 })
 .factory('Comm', function ($http) {
-    // var getCommute = function (user) {
-        
-    //     var formatTime = function (date) {
-    //       var hours = date.getHours();
-    //       var minutes = date.getMinutes();
-    //       var ampm = hours >= 12 ? 'pm' : 'am';
-    //       hours = hours % 12;
-    //       hours = hours ? hours : 12; // the hour '0' should be '12'
-    //       minutes = minutes < 10 ? '0'+minutes : minutes;
-    //       var strTime = hours + ':' + minutes + ' ' + ampm;
-    //       return strTime;
-    //     };
-        
-    //     //assume minutes
-    //     user.duration = 30;
-    //     user.arrivalTime = new Date('February 17, 2016 08:30:00');
-    //     user.departureTime = new Date(user.arrivalTime - (user.duration * 60000));
-    //     user.departureTime = formatTime(user.departureTime);
-    // };
-
     var getCommute = function (user) {
         user.username = 'colin';
         $http({
@@ -114,11 +93,9 @@ angular.module('commutely.services', [])
                var strTime = hours + ':' + minutes + ' ' + ampm;
                return strTime;
              };
-             
              //assume minutes
-             user.duration = resp.body.duration;
-             // user.arrivalTime = new Date('February 17, 2016 08:30:00');
-             user.arrivalTime = resp.body.arrivalTime;
+             user.duration = resp.data.duration;
+             user.arrivalTime = new Date(resp.data.arrivalTime);
              user.departureTime = new Date(user.arrivalTime - (user.duration * 60000));
              user.departureTime = formatTime(user.departureTime);
         });

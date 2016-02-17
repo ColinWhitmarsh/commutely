@@ -1,9 +1,21 @@
 var User = require('./userModel.js');
 var Q = require('q');
 var jwt = require('jwt-simple');
+var client = require('twilio')('AC088d01f4797b49e536690c7e11651a0f', '71e571fb68bc7bbd3ee7faa7d62da016');
 
 var findUser = Q.nbind(User.findOne, User);
 var createUser = Q.nbind(User.create, User);
+
+var notifyUser = function (message, req, res, next) {
+  client.sendMessage(message, function(err, responseData) {
+    if (!err) { 
+        console.log(responseData.from);
+        console.log(responseData.body);
+    } else {
+        console.error(err);
+    }
+  });
+};
 
 module.exports = {
   login: function (req, res, next) {
@@ -64,6 +76,7 @@ module.exports = {
     var destination = req.body.destination;
     var duration = req.body.duration;
     var arrivalTime = req.body.arrivalTime;
+    var travelMode = req.body.travelMode;
 
     findUser({username: username})
       .then(function (user) {
@@ -74,6 +87,7 @@ module.exports = {
           user.destination = destination;
           user.duration = duration;
           user.arrivalTime = arrivalTime;
+          user.travelMode = travelMode;
           user.save(function(err) {
             if (err) {
               return next(new Error('Couldn\'t update user'));
@@ -101,11 +115,13 @@ module.exports = {
           if (!user) {
             next(new Error('User does not exist'));
           } else {
-            res.body.origin = user.origin;
-            res.body.destination = user.destination;
-            res.body.duration = user.duration;
-            res.body.arrivalTime = user.arrivalTime;
-            res.send(200);
+            var message = {
+              to: '+12022585536',
+              from: '+12025176941',
+              body: 'Leave by 8:00 AM to arrive on time'
+            };
+            notifyUser(message);
+            res.send(user);
           }
       })
       .fail(function (error) {

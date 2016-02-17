@@ -18,7 +18,8 @@
     "angular": "~1.5.0",
     "angular-route": "^1.5.0",
     "angular-google-maps": "^2.3.2",
-    "angularjs-datetime-picker": "~0.1.20"
+    "angularjs-datetime-picker": "~0.1.20",
+    "Materialize": "materialize#~0.97.5"
   },
   "resolutions": {
     "angular": "~1.5.0"
