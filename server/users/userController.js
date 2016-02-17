@@ -106,6 +106,7 @@ module.exports = {
 
   getRoute: function (req, res, next) {
     var token = req.headers['x-access-token'];
+    console.log(token);
     if (!token) {
       next(new Error('No token'));
     } else {

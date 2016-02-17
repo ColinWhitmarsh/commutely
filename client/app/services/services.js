@@ -37,7 +37,7 @@ angular.module('commutely.services', [])
         signout: signout
     };
 })
-.factory('Route', function ($http) {
+.factory('Route', function ($http, $location) {
     var saveRoute = function (user) {
           var directionsService = new window.google.maps.DirectionsService
           var selectedMode = document.getElementById('mode').value;
@@ -63,6 +63,7 @@ angular.module('commutely.services', [])
                     data: user
                 })
                 .then(function (resp) {
+                    $location.path('/commute');
                     return resp.data.token;
                 });
             } else {

@@ -4,7 +4,7 @@ angular.module('commutely.route', [])
   $scope.user = {};
 
   $scope.saveRoute = function () {
-    Route.saveRoute($scope.user);
+    Route.saveRoute($scope.user)
   };
 
 });
