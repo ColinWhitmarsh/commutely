@@ -17,7 +17,8 @@ Icon
 node_modules/
 db/
 client/lib
-twilioConfig.js
+twilio.js
+googlemaps.js
 
 # Floobits
 .floo
