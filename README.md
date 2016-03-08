@@ -23,6 +23,15 @@ npm install
 bower install
 ```
 
+### Run in Development
+```sh
+mongod
+```
+...in a separate terminal shell
+```sh
+npm start
+```
+
 ### Roadmap
 
 View the project roadmap [here](https://github.com/ColinWhitmarsh/commutely/issues)

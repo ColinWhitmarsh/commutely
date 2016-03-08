@@ -1,7 +1,7 @@
 var User = require('./userModel.js');
 var Q = require('q');
 var jwt = require('jwt-simple');
-var cfg = require('../config/twilioConfig.js')
+var cfg = require('../config/twilio.js')
 var client = require('twilio')(cfg.accountSid,cfg.authToken);
 
 var findUser = Q.nbind(User.findOne, User);

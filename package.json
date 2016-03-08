@@ -4,7 +4,8 @@
   "description": "commuting app",
   "main": "server/server.js",
   "scripts": {
-    "test": "test"
+    "test": "test",
+    "start": "nodemon server/server.js"
   },
   "author": "Colin Whitmarsh",
   "license": "UNLICENSED",
