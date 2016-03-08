@@ -20,10 +20,15 @@ bower install
 ```
 
 ### Run in Development
+
+Add your personal Twilio and Google Maps api keys to config files in the server directory.
+
+...then
+
 ```sh
 mongod
 ```
-...in a separate terminal shell
+...and then in a separate terminal shell
 ```sh
 npm start
 ```
