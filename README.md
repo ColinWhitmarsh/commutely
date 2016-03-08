@@ -2,10 +2,6 @@
 
 > An app that alerts commuters when they need to leave each morning to arrive on-time based on current traffic conditions
 
-## Usage
-
-> Some usage instructions
-
 ## Requirements
 
 - Node 4.2.x
